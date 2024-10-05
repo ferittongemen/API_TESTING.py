@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.x
+    commands:
+      - pip install requests
+      - pip install HtmlTestRunner
+  build:
+    commands:
+      - echo Running API Tests...
+      - python -m unittest discover -s . -p "*_test.py"
+  post_build:
+    commands:
+      - echo Tests completed successfully
+artifacts:
+  files:
+    - 'test_reports/*'
